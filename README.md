@@ -96,3 +96,35 @@ Verify:
 docker --version
 docker compose version
 ```
+
+---
+
+
+## Installation & Setup
+
+1. **Clone the repository**:
+```plaintext
+git clone https://github.com/AhmedDev374/Site-Observability-Platform.git
+cd Site-Observability-Platform
+```
+
+2. Create an ```.env``` file (copy the example below or touch .env and fill it).
+
+3. **Build and start the stack:**:
+```plaintext
+docker compose up --build
+```
+4. Visit the services (example ports — check ```docker-compose.yml``` for exact mappings):
+   - Frontend (React): ```http://localhost/home```
+   - Nginx (reverse proxy / entry): ```http://localhost```
+   - Individual microservice APIs (example):
+```plaintext
+   -    http://localhost/auth
+   -    http://localhost/home
+   -    http://localhost/home/orders
+   -    http://localhost/home/wishlist
+   -    http://localhost/home/account
+   -    http://localhost/home/payment
+   -    http://localhost/home/product/<id>
+   -    http://localhost/home/cart
+```
