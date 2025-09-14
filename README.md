@@ -67,3 +67,32 @@ Microservices in this repo (each in its own folder):
     (React)   (Service)     (Service)    (Service)   (Service)
        |          |             |           |           |
     (Static)  (API JWT)     (API CRUD)   (API)    (3rd-party)
+```
+All services are built/run as Docker containers and communicate over an internal Docker network.
+
+---
+
+## Feature
+  - Microservice architecture (independent services)
+  - React-based frontend (single-page app)
+  - Nginx reverse proxy for routing
+  - Dockerized for easy local deployment
+  - Basic authentication and session flow (JWT)
+  - Cart, wishlist, orders, payment microservices
+  - Ready to extend with DB, cache and external integrations
+
+---
+
+## Prerequisites
+
+Ensure the following are installed on your system:
+
+1. **Docker** – 24.x or later
+2. **Docker Compose** – v2.x (included with recent Docker Desktop)
+
+Verify:
+
+```plaintext
+docker --version
+docker compose version
+```
