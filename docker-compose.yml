@@ -1,0 +1,67 @@
+services:
+  auth:
+    build: ./Auth
+    container_name: auth_service
+    expose:
+      - "80"
+
+  home:
+    build: ./Home_Page
+    container_name: home_service
+    expose:
+      - "80"
+
+  account:
+    build: ./Account
+    container_name: account_service
+    expose:
+      - "80"
+
+  product:
+    build: ./Product
+    container_name: product_service
+    expose:
+      - "80"
+
+  cart:
+    build: ./Cart
+    container_name: cart_service
+    expose:
+      - "80"
+
+  wishlist:
+    build: ./Wishlist
+    container_name: wishlist_service
+    expose:
+      - "80"
+
+  payment:
+    build: ./Payment
+    container_name: payment_service
+    expose:
+      - "80"
+
+  orders:
+    build: ./Orders
+    container_name: orders_service
+    expose:
+      - "80"
+
+
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_gateway
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - auth
+      - home
+      - account
+      - product
+      - cart
+      - wishlist
+      - payment
+      - orders
