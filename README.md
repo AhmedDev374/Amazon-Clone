@@ -128,3 +128,88 @@ docker compose up --build
    -    http://localhost/home/product/<id>
    -    http://localhost/home/cart
 ```
+> **Note:** Exact ports and hostnames depend on the docker-compose.yml in this repo. If a service fails to come up, check the compose file and service logs.
+
+---
+
+## Run services individually (development)
+If you want to run a single service locally (without Docker):
+```plaintext
+# example for Product service
+cd Product
+npm install
+then
+npm start
+```
+Repeat for ```Auth```, ```Cart```, ```Orders```, etc. The frontend can be run with ```npm start``` inside ```Home_Page``` (React dev server).
+
+When running locally you might need to update the frontend API base URLs to point to the service ports you started.
+
+---
+
+## Configuration & Environment Variables
+Create a root ```.env``` or per-service ```.env``` files. Example (fill with your real values):
+```plaintext
+# Example global env
+NGINX_HOST=localhost
+
+# Example for Auth / services
+JWT_SECRET=your_jwt_secret
+MONGO_URI=mongodb://host:27017/amazon_clone
+REDIS_URL=redis://redis:6379
+
+# Payment
+PAYMENT_PROVIDER_KEY=sk_test_xxx
+
+# Frontend
+REACT_APP_API_BASE=http://localhost:8000
+```
+Each microservice may expect additional env vars (DB credentials, third-party keys). Check each service folder for ```.env.example``` or config files. If not present, create them as needed.
+
+---
+
+## Project structure
+```plaintext
+Amazon-Clone/
+├── Account/
+├── Auth/
+├── Cart/
+├── Home_Page/         # React frontend
+├── Orders/
+├── Payment/
+├── Product/
+├── Wishlist/
+├── docker-compose.yml
+├── nginx.conf
+└── README.md
+```
+
+---
+
+## Troubleshooting
+Containers won't start / port conflicts
+   - Inspect compose logs:
+```plaintext
+   docker compose logs --tail=200
+   docker compose logs <service-name>
+```
+   - Free used ports or edit docker-compose.yml to map different host ports.
+
+Service cannot connect to DB
+   - Confirm ```MONGO_URI``` (or DB host) is reachable from containers.
+   - If running DB locally (not in compose), use host networking or proper hostnames.
+
+Frontend shows CORS errors
+   - Ensure the backend services allow the frontend origin or run everything behind Nginx (so same origin).
+
+Missing env vars or keys
+   - Check each service folder for README or .env.example. Add required envs to .env files.
+
+---
+
+## Contact
+
+For questions or feedback, reach out to Ahmed at
+
+1. **LinkDin**: https://eg.linkedin.com/in/ahmed-atef-elnadi-8165a51b9
+
