@@ -603,7 +603,7 @@ useEffect(() => {
                           onChange={accName}
                           onBlur={handleCardName}
                           value={cardName}
-                          placeholder="Ex: John Doe"
+                          placeholder="Ex: Ahmed Elnadi"
                         />
                         {CardNameError && (
                           <div className="error-message">{CardNameError}</div>

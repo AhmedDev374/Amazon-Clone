@@ -80,10 +80,13 @@
 
 .card-category {
   margin: 0;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 12px;
+  text-transform: uppercase;   /* keeps text in caps for clarity */
+  font-weight: 500;            /* slightly bolder for readability */
+  color: #333;                 /* safe dark gray */
+  font-size: 0.875rem;         /* ~14px, better for readability */
+  letter-spacing: 0.5px;       /* adds clarity for uppercase text */
 }
+
 
 .mrp {
   margin-left: 8px;

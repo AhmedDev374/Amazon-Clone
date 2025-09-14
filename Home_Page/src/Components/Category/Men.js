@@ -50,7 +50,7 @@ function Men() {
 
   return (
     <div className="Deals">
-      <p className="deals-head-item-m">Men's Clothing</p>
+      <p className="deals-head">Men's Clothing</p>
       {loading && <Spinner />}
       <div className="deal-items">
         {AllProducts &&
