@@ -314,4 +314,11 @@ For questions or feedback, reach out to Ahmed at
 
 1. **LinkDin**: https://eg.linkedin.com/in/ahmed-atef-elnadi-8165a51b9
 
+---
+
+## License
+
+This project is licensed under the **GNU General Public License v3.0**.  
+See the full license text here: [LICENSE](LICENSE).
+
 
