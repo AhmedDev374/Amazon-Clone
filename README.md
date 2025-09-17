@@ -158,7 +158,7 @@ cd Amazon-Clone
 ## Run with Docker Compose (recommended for local dev)
 ```plaintext
 # from repo root or inside amazonclone-docker-compose (if compose file is inside that folder)
-cd amazonclone-docker-compose   # adjust to the actual folder if needed
+cd amazon-clone-docker-compose-react  # adjust to the actual folder if needed
 docker compose up --build
 ```
 Visit the services (example routes — confirm exact ports in ```docker-compose.yml```):
@@ -174,25 +174,42 @@ Visit the services (example routes — confirm exact ports in ```docker-compose.
       - http://localhost/home/product/<id>
       - http://localhost/home/cart
       
+> **Note:** exact ports/paths depend on the docker-compose.yml mapping. If a service fails to come up, run docker compose logs <service-name>.
 
+---
 
-3. **Build and start the stack:**:
+## Run on Kubernetes (Ingress)
+If you prefer to run in Kubernetes (Ingress), use the manifests in the K8s folder.
+
+Example (minikube):
 ```plaintext
-docker compose up --build
-```
-4. Visit the services (example ports — check ```docker-compose.yml``` for exact mappings):
-   - Frontend (React): ```http://localhost/home```
-   - Nginx (reverse proxy / entry): ```http://localhost```
-   - Individual microservice APIs (example):
-```plaintext
-   -    http://localhost/auth
-   -    http://localhost/home
-   -    http://localhost/home/orders
-   -    http://localhost/home/wishlist
-   -    http://localhost/home/account
-   -    http://localhost/home/payment
-   -    http://localhost/home/product/<id>
-   -    http://localhost/home/cart
+# start minikube
+minikube start --driver=docker
+
+# enable ingress (minikube)
+minikube addons enable ingress
+
+# Change [ingress-nginx-controller ] form node port to loadBalancer
+kubectl get svc -n ingress-nginx
+kubectl patch svc ingress-nginx-controller -n ingress-nginx --type=merge -p '{\"spec\":{\"type\":\"LoadBalancer\"}}'
+
+# PowerShell Admins
+C:\Windows\System32\drivers\etc\hosts
+<EXTERNAL-IP of  ingress-nginx-controller >  <host>
+Ex:
+   127.0.0.1 localhost
+
+# Make Tunnel
+minikube tunnel
+
+# apply k8s manifests (adjust path to your k8s folder)
+cd amazon-clone_kubernetes_ingress
+kubectl apply -f <name of file>.yml
+
+# Apply Ingress
+cd Ingress
+kubectl apply -f ingress.yml
+
 ```
 > **Note:** Exact ports and hostnames depend on the docker-compose.yml in this repo. If a service fails to come up, check the compose file and service logs.
 
