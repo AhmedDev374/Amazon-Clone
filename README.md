@@ -209,24 +209,35 @@ kubectl apply -f <name of file>.yml
 # Apply Ingress
 cd Ingress
 kubectl apply -f ingress.yml
-
 ```
-> **Note:** Exact ports and hostnames depend on the docker-compose.yml in this repo. If a service fails to come up, check the compose file and service logs.
+
+Check resources:
+
+```plaintext
+kubectl get pods -n amazon-clone
+kubectl get svc -n amazon-clone
+kubectl get ingress -n amazon-clone
+```
 
 ---
 
 ## Run services individually (development)
-If you want to run a single service locally (without Docker):
+To run a single service without Docker (useful for debugging):
 ```plaintext
-# example for Product service
+cd amazon-clone-docker-compose-react
+# example: Product
 cd Product
 npm install
-then
 npm start
 ```
 Repeat for ```Auth```, ```Cart```, ```Orders```, etc. The frontend can be run with ```npm start``` inside ```Home_Page``` (React dev server).
 
-When running locally you might need to update the frontend API base URLs to point to the service ports you started.
+```plaintext
+cd Home_Page
+npm install
+npm start
+```
+When running locally, update the frontend API base URLs to point to the ports for the backend services you started.
 
 ---
 
@@ -277,6 +288,13 @@ Containers won't start / port conflicts
    docker compose logs <service-name>
 ```
    - Free used ports or edit docker-compose.yml to map different host ports.
+
+Kubernetes pods fail
+- Check pod logs:
+```plaintext
+kubectl logs <pod-name> -n amazon-clone
+kubectl describe pod <pod-name> -n amazon-clone
+```
 
 Service cannot connect to DB
    - Confirm ```MONGO_URI``` (or DB host) is reachable from containers.
