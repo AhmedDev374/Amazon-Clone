@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: amazon-clone
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wishlist-deployment
+  namespace: amazon-clone
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wishlist
+  template:
+    metadata:
+      labels:
+        app: wishlist
+    spec:
+      containers:
+      - name: wishlist
+        image: ahmedatefelnadi/amazon-clone:wishlist-latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wishlist-service
+  namespace: amazon-clone
+spec:
+  selector:
+    app: wishlist
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
