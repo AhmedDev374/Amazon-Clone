@@ -6,17 +6,32 @@
 
 ## Quick gallery
 
+## Quick Gallery
+
 1. **Home / Catalog:**  
-   ![home_screenshot](Images/home_screenshot.PNG)
+   ![home_page](Images&Videos/Images/home_page.PNG)
 
 2. **Product Page:**  
-   ![product_page](Images/product_page.PNG)
+   ![product](Images&Videos/Images/product.PNG)
 
 3. **Cart / Checkout:**  
-   ![cart_checkout](Images/cart_checkout.PNG)
+   ![cart](Images&Videos/Images/cart.PNG)
 
-4. **Admin / Orders:**  
-   ![orders_admin](Images/orders_admin.PNG)
+4. **Orders / Admin:**  
+   ![orders](Images&Videos/Images/orders.PNG)
+
+5. **Payment:**  
+   ![payment](Images&Videos/Images/payment.PNG)
+
+6. **Wishlist:**  
+   ![wishlist](Images&Videos/Images/wishlist.PNG)
+
+7. **Account:**  
+   ![account](Images&Videos/Images/account.PNG)
+
+8. **Auth / Login:**  
+   ![auth](Images&Videos/Images/auth.PNG)
+
 
 > Replace the image names above with actual screenshots in `Images/` (example: `Images/home_screenshot.PNG`). If you don't have screenshots yet, remove this section or add them later.
 
