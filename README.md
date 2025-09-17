@@ -85,7 +85,9 @@ You mentioned you have two folders in the repository:
    - `amazon-clone-kubernetes-ingress` — contains Kubernetes manifests and example Ingress rules.
 
 This README below is tailored for the repo:
-```https://github.com/AhmedDev374/Amazon-Clone```
+```plain
+https://github.com/AhmedDev374/Amazon-Clone
+```
 ---
 
 ## Architecture
