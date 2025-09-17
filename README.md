@@ -88,6 +88,9 @@ This README below is tailored for the repo:
 ```plain
 https://github.com/AhmedDev374/Amazon-Clone
 ```
+
+> If the exact folder names in your repo differ slightly, update the commands below to the actual folder names.
+
 ---
 
 ## Architecture
@@ -102,7 +105,7 @@ https://github.com/AhmedDev374/Amazon-Clone
        |          |             |           |           |
     (Static)  (API JWT)     (API CRUD)   (API)    (3rd-party)
 ```
-All services are built/run as Docker containers and communicate over an internal Docker network.
+All services are built/run as Docker containers and (optionally) deployed to Kubernetes, communicating over an internal network.
 
 ---
 
@@ -111,6 +114,7 @@ All services are built/run as Docker containers and communicate over an internal
   - React-based frontend (single-page app)
   - Nginx reverse proxy for routing
   - Dockerized for easy local deployment
+  - Kubernetes manifests + Ingress for cluster deployment/testing
   - Basic authentication and session flow (JWT)
   - Cart, wishlist, orders, payment microservices
   - Ready to extend with DB, cache and external integrations
@@ -119,16 +123,23 @@ All services are built/run as Docker containers and communicate over an internal
 
 ## Prerequisites
 
-Ensure the following are installed on your system:
+Make sure you have the tools needed for the deployment method you choose.
 
-1. **Docker** – 24.x or later
-2. **Docker Compose** – v2.x (included with recent Docker Desktop)
+For Docker Compose
+   1. **Docker** – 24.x or later
+   2. **Docker Compose** – v2.x (included with recent Docker Desktop)
+
+For Kubernetes
+   1. kubectl
+   2. A Kubernetes cluster (minikube, kind, microk8s, or a managed cluster)
+   3.  An Ingress controller installed (for minikube you can ```minikube addons enable ingress```)
 
 Verify:
-
 ```plaintext
 docker --version
 docker compose version
+kubectl version --client
+minikube version    # if using minikube
 ```
 
 ---
@@ -138,11 +149,32 @@ docker compose version
 
 1. **Clone the repository**:
 ```plaintext
-git clone https://github.com/AhmedDev374/Site-Observability-Platform.git
-cd Site-Observability-Platform
+git clone https://github.com/AhmedDev374/Amazon-Clone.git
+cd Amazon-Clone
 ```
 
 2. Create an ```.env``` file (copy the example below or touch .env and fill it).
+
+## Run with Docker Compose (recommended for local dev)
+```plaintext
+# from repo root or inside amazonclone-docker-compose (if compose file is inside that folder)
+cd amazonclone-docker-compose   # adjust to the actual folder if needed
+docker compose up --build
+```
+Visit the services (example routes — confirm exact ports in ```docker-compose.yml```):
+   - Frontend (React / SPA): http://localhost/home
+   - Nginx (entry point / reverse proxy): http://localhost
+   - APIs:
+      - http://localhost/auth
+      - http://localhost/home
+      - http://localhost/home/orders
+      - http://localhost/home/wishlist
+      - http://localhost/home/account
+      - http://localhost/home/payment
+      - http://localhost/home/product/<id>
+      - http://localhost/home/cart
+      
+
 
 3. **Build and start the stack:**:
 ```plaintext
