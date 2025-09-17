@@ -75,6 +75,17 @@ Microservices in this repo (each in its own folder):
 - `nginx.conf` — routing / proxy config
 - `docker-compose.yml` — orchestrates services and networks (Docker Compose option)
 - `k8s/ or kubernetes/` — Kubernetes manifests / ingress (K8s option)
+
+---
+
+## Repo / Deployment folders
+You mentioned you have two folders in the repository:
+
+   - `amazonclone-docker-compose` — contains docker-compose.yml and compose-based service definitions.
+   - `amazon-clone-kubernetes-ingress` — contains Kubernetes manifests and example Ingress rules.
+
+This README below is tailored for the repo:
+```https://github.com/AhmedDev374/Amazon-Clone```
 ---
 
 ## Architecture
