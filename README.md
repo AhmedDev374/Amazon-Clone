@@ -43,17 +43,23 @@
 
 ## Table of Contents
 
+- [Demo Video](#demo-video)  
+- [Quick Gallery](#quick-gallery)  
 - [Overview](#overview)  
+- [Repo / Deployment folders](#repo--deployment-folders)  
 - [Architecture](#architecture)  
-- [Features](#features)  
+- [Feature](#feature)  
 - [Prerequisites](#prerequisites)  
-- [Install & Run (Docker Compose)](#install--run-docker-compose)  
-- [Run services individually (dev)](#run-services-individually-dev)  
-- [Configuration / .env examples](#configuration--env)  
+- [Installation & Setup](#installation--setup)  
+  - [Run with Docker Compose (recommended for local dev)](#run-with-docker-compose-recommended-for-local-dev)  
+  - [Run on Kubernetes (Ingress)](#run-on-kubernetes-ingress)  
+- [Run services individually (development)](#run-services-individually-development)  
+- [Configuration & Environment Variables](#configuration--environment-variables)  
 - [Project structure](#project-structure)  
 - [Troubleshooting](#troubleshooting)  
 - [Contact](#contact)  
 - [License](#license)
+
 
 ---
 
